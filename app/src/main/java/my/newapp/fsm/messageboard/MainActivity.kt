@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val toggle = ActionBarDrawerToggle(
             this,
             binding.drawerLayout,
-            findViewById(R.id.toolbar),
+            binding.mainContent.toolbar,
             R.string.open,
             R.string.close
             )
