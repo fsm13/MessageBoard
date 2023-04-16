@@ -22,16 +22,22 @@ class DialogHelper(act: MainActivity) {
             binding.tvSignTitle.text = activity.resources.getString(R.string.ad_sign_in)
             binding.btSignUpIn.text = activity.resources.getString(R.string.sign_in_action)
         }
-        builder.show()
+        val dialog = builder.create()
         binding.btSignUpIn.setOnClickListener {
+            dialog.dismiss()
             if (index == SIGN_UP_STATE) {
                 accHelper.signUpWithEmail(
                     binding.edSignEmail.text.toString(),
                     binding.edSignPassword.text.toString()
                 )
             } else {
+                accHelper.signInWithEmail(
+                    binding.edSignEmail.text.toString(),
+                    binding.edSignPassword.text.toString()
+                )
             }
         }
+        dialog.show()
     }
 
 
