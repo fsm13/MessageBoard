@@ -29,5 +29,7 @@
     <string name="email_reset_password">Письмо для восстановления пароля направлено!</string>
     <string name="dialog_reset_email_message">Укажите Ваш Email</string>
     <string name="no_result">Результат не найден</string>
+    <string name="select_country">Выберите страну</string>
+    <string name="select_city">Выберите город</string>
 
 </resources>

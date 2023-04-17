@@ -6,6 +6,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.SearchEvent
 import android.widget.SearchView
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import my.newapp.fsm.messageboard.R
@@ -13,18 +14,19 @@ import my.newapp.fsm.messageboard.utils.CityHelper
 
 class DialogSpinnerHelper {
 
-    fun showSpinnerDialog(context: Context, list: ArrayList<String>) {
+    fun showSpinnerDialog(context: Context, list: ArrayList<String>, tvSelection: TextView) {
         val builder = AlertDialog.Builder(context)
+        val dialog = builder.create()
         val view = LayoutInflater.from(context).inflate(R.layout.spinner_layout, null)
-        val adapter = RCViewDialogSpinnerAdapter()
+        val adapter = RCViewDialogSpinnerAdapter(tvSelection, dialog)
         val rcView = view.findViewById<RecyclerView>(R.id.rcSpView)
         val sv = view.findViewById<SearchView>(R.id.svSpinner)
         rcView.layoutManager = LinearLayoutManager(context)
         rcView.adapter = adapter
-        builder.setView(view)
+        dialog.setView(view)
         adapter.updateAdapter(list)
         setSearchViewListener(adapter, list, sv)
-        builder.show()
+        dialog.show()
     }
 
     private fun setSearchViewListener(
